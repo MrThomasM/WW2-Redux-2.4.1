@@ -98,6 +98,10 @@ BIS_fnc_WL2_updateSectorArrays = compile preprocessFileLineNumbers "Functions\co
 BIS_fnc_WL2_varsInit = compile preprocessFileLineNumbers "Functions\common\WL2_varsInit.sqf";
 BIS_fnc_WL2_zoneRestrictionHandleClient = compile preprocessFileLineNumbers "Functions\client\WL2_zoneRestrictionHandleClient.sqf";
 BIS_fnc_WL2_zoneRestrictionHandleServer = compile preprocessFileLineNumbers "Functions\server\WL2_zoneRestrictionHandleServer.sqf";
+BIS_fnc_WL2_clientFundsUpdateLoop = compile preprocessFileLineNumbers "Functions\client\clientFundsUpdateLoop.sqf";
+BIS_fnc_WL2_dataBase = compile preprocessFileLineNumbers "Functions\server\dataBase.sqf";
+BIS_fnc_WL2_clientFundsUpdate = compile preprocessFileLineNumbers "Functions\client\clientFundsUpdate.sqf";
+BIS_fnc_WL2_clientFundsRecieve = compile preprocessFileLineNumbers "Functions\client\clientFundsRecieve.sqf";
 BIS_fnc_WL2_welcome = compile preprocessFileLineNumbers "welcome.sqf";
 
 endLoadingScreen;
@@ -151,5 +155,10 @@ if ( hasInterface ) then
 //end welcome section 
 
 [] call BIS_fnc_WL2_mineLimit;
+if(isServer) then
+{
+	moneyDatabase = createHashmap;
+	MRTM_spawnedAPERSMine_Range_Ammo = [];
+};
 [] call BIS_fnc_WL2_initCommon;
 

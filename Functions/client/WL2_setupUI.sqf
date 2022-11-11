@@ -147,6 +147,8 @@ switch (_displayClass) do {
 			if (ctrlEnabled (_display displayCtrl 120)) then {
 				playSound "AddItemFailed";
 				[player, BIS_WL_fundsTransferCost] call BIS_fnc_WL2_fundsControl;
+				private  _id = clientOwner;
+				[] remoteExec ["BIS_fnc_WL2_clientFundsUpdate",  _id];
 			};
 			BIS_WL_purchaseMenuVisible = FALSE;
 			WL_CONTROL_MAP ctrlEnable TRUE;
@@ -467,6 +469,8 @@ switch (_displayClass) do {
 					_inf = ((BIS_WL_dropPool # _i) # 0) isKindOf "Man";
 					BIS_WL_dropPool deleteAt _i;
 					[player, _refund] call BIS_fnc_WL2_fundsControl;
+					private  _id = clientOwner;
+					[] remoteExec ["BIS_fnc_WL2_clientFundsUpdate",  _id];
 					if (_inf) then {BIS_WL_matesInBasket = BIS_WL_matesInBasket - 1} else {BIS_WL_vehsInBasket = BIS_WL_vehsInBasket - 1};
 					_display = uiNamespace getVariable ["BIS_WL_purchaseMenuDisplay", displayNull];
 					_purchase_items = _display displayCtrl 101;
@@ -484,6 +488,8 @@ switch (_displayClass) do {
 					_refundTotal = _refundTotal + (_x # 1);
 				} forEach BIS_WL_dropPool;
 				[player, _refundTotal] call BIS_fnc_WL2_fundsControl;
+				private  _id = clientOwner;
+				[] remoteExec ["BIS_fnc_WL2_clientFundsUpdate",  _id];
 				BIS_WL_matesInBasket = 0;
 				BIS_WL_vehsInBasket = 0;
 				BIS_WL_dropPool = [];
@@ -670,6 +676,8 @@ switch (_displayClass) do {
 			};
 			playSound "AddItemFailed";
 			[player, BIS_WL_fundsTransferCost] call BIS_fnc_WL2_fundsControl;
+			private  _id = clientOwner;
+			[] remoteExec ["BIS_fnc_WL2_clientFundsUpdate",  _id];
 		}];
 		
 		((uiNamespace getVariable ["BIS_WL_purchaseMenuLastSelection", [0, 0, 0]]) # 0) call BIS_fnc_WL2_sub_purchaseMenuSetItemsList;

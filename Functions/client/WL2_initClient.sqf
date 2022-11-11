@@ -244,3 +244,9 @@ sleep 1;
 [] spawn BIS_fnc_WL2_targetSelectionHandleClient;
 [] spawn BIS_fnc_WL2_purchaseMenuOpeningHandle;
 [] spawn BIS_fnc_WL2_assetMapControl;
+
+private _uid = getPlayerUID player;
+private _id = clientOwner;
+[_uid, 0, _id, "recieve"] remoteExecCall ["BIS_fnc_WL2_dataBase", 2];
+sleep 1;
+[] call BIS_fnc_WL2_clientFundsUpdateLoop;

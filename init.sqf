@@ -159,6 +159,7 @@ if(isServer) then
 {
 	moneyDatabase = createHashmap;
 	MRTM_spawnedAPERSMine_Range_Ammo = [];
+	MRTM_spawnedATMine_Range_Ammo = [];
 };
 [] call BIS_fnc_WL2_initCommon;
 

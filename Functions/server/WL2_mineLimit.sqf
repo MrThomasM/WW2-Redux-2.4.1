@@ -26,7 +26,7 @@ addMissionEventhandler ["EntityCreated", {
 
 addMissionEventhandler ["EntityCreated", {
   params ["_entity"];
-  if (typeOf _entity != "APERSMine_Range_Ammo") exitwith {};
+  if (typeOf _entity != "ATMine_Range_Ammo") exitwith {};
   if (count MRTM_spawnedATMine_Range_Ammo >= 50) then {
     private _mines = MRTM_spawnedATMine_Range_Ammo;
     // to get rid of destroyed mines without messing up the order

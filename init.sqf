@@ -157,7 +157,9 @@ if ( hasInterface ) then
 [] call BIS_fnc_WL2_mineLimit;
 if(isServer) then
 {
+	//CP databse
 	moneyDatabase = createHashmap;
+	// Mine Array
 	MRTM_spawnedAPERSMine_Range_Ammo = [];
 	MRTM_spawnedATMine_Range_Ammo = [];
 };
